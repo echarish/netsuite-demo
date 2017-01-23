@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:netsuite="http://www.mulesoft.org/schema/mule/netsuite"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule/netsuite/current/mule-netsuite.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+
+	<netsuite:config-login-authentication
+		name="NetSuite__Chetan" email="chetan.parekh@capgemini.com" password="technology@77"
+		account="3721178" roleId="18" applicationId="214473E9-FB2D-4679-8C02-49D5093C6D8F"
+		endpoint="https://webservices.sandbox.netsuite.com/services/NetSuitePort_2016_1"
+		doc:name="NetSuite: Login Authentication" />
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <flow name="netsuite-demoFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/nstest" doc:name="HTTP"/>
+    </flow>
+
+
+</mule>
